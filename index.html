@@ -221,6 +221,33 @@ main{position:relative;z-index:5;padding:24px 28px;max-width:1440px;margin:0 aut
 .bar-chart-item{flex:1;border-radius:3px 3px 0 0;transition:height 0.6s ease;cursor:pointer;min-width:4px;}
 .bar-chart-item:hover{opacity:0.8;}
 
+/* ── MARKET INTELLIGENCE PANEL ── */
+.intel-panel{background:rgba(0,180,255,0.03);border:1px solid rgba(0,180,255,0.2);border-radius:12px;padding:20px;margin-bottom:20px;animation:fadeUp 0.4s ease;}
+.intel-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:8px;}
+.intel-title{display:flex;align-items:center;gap:10px;font-family:'Orbitron',monospace;font-size:12px;color:var(--cyan);letter-spacing:2px;}
+.intel-icon{font-size:18px;}
+.intel-badge{font-size:9px;padding:2px 8px;border-radius:10px;border:1px solid rgba(0,240,135,0.4);color:var(--green);background:rgba(0,240,135,0.08);letter-spacing:1px;}
+.intel-note{font-size:11px;color:var(--dim);}
+.intel-grid{display:grid;grid-template-columns:1fr 1fr 2fr;gap:14px;margin-bottom:14px;}
+.intel-card{background:rgba(0,0,0,0.25);border:1px solid var(--border);border-radius:9px;padding:14px;}
+.intel-card-wide{grid-column:span 1;}
+.intel-card-title{font-size:11px;font-weight:700;color:var(--text);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border);}
+.intel-row{display:flex;justify-content:space-between;align-items:center;padding:5px 0;border-bottom:1px solid rgba(255,255,255,0.04);}
+.intel-row:last-child{border-bottom:none;}
+.ir-lbl{font-size:10px;color:var(--dim);}
+.ir-val{font-family:'Share Tech Mono',monospace;font-size:12px;color:var(--text);}
+.ir-val.up{color:var(--red);}.ir-val.dn{color:var(--green);}.ir-val.warn{color:var(--gold);}
+.intel-signal{margin-top:10px;padding:8px 12px;border-radius:6px;font-size:11px;text-align:center;font-family:'Share Tech Mono',monospace;}
+.intel-signal.bull{background:rgba(255,63,94,0.1);border:1px solid rgba(255,63,94,0.3);color:var(--red);}
+.intel-signal.bear{background:rgba(0,240,135,0.1);border:1px solid rgba(0,240,135,0.3);color:var(--green);}
+.intel-signal.neut{background:rgba(245,200,66,0.08);border:1px solid rgba(245,200,66,0.3);color:var(--gold);}
+.intel-note-sm{font-size:10px;color:var(--dim);line-height:1.6;margin-bottom:8px;}
+.intel-link-list{display:flex;flex-direction:column;gap:6px;}
+.intel-link{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--cyan);text-decoration:none;padding:6px 10px;border-radius:5px;border:1px solid var(--border);background:rgba(0,180,255,0.04);transition:all 0.2s;}
+.intel-link:hover{border-color:var(--border-hi);background:rgba(0,180,255,0.1);}
+.self-score-bar{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;background:rgba(245,200,66,0.06);border:1px solid rgba(245,200,66,0.25);border-radius:8px;flex-wrap:wrap;gap:10px;}
+.ss-title{font-size:11px;color:var(--gold);}
+
 /* SCROLLBAR */
 ::-webkit-scrollbar{width:4px;height:4px;}
 ::-webkit-scrollbar-track{background:var(--bg);}
@@ -233,8 +260,8 @@ main{position:relative;z-index:5;padding:24px 28px;max-width:1440px;margin:0 aut
 .toast.err{background:rgba(255,63,94,0.15);border:1px solid rgba(255,63,94,0.4);color:var(--red);}
 .toast.info{background:rgba(0,180,255,0.12);border:1px solid rgba(0,180,255,0.35);color:var(--cyan);}
 
-@media(max-width:960px){.sim-grid{grid-template-columns:1fr 1fr;}.rgrid{grid-template-columns:1fr 1fr;}.scw{display:none;}.stock-metrics{grid-template-columns:repeat(3,1fr);}.stats-row{grid-template-columns:repeat(2,1fr);}.dgrid{grid-template-columns:1fr 1fr;}}
-@media(max-width:600px){header{padding:12px 16px;flex-direction:column;gap:10px;}.tabs{padding:0 12px;}.tab{padding:10px 12px;font-size:10px;letter-spacing:1px;}main{padding:16px 14px;}.sim-grid{grid-template-columns:1fr;}.stock-metrics{grid-template-columns:repeat(2,1fr);}.dgrid{grid-template-columns:1fr 1fr;}.stats-row{grid-template-columns:1fr 1fr;}.rgrid{grid-template-columns:1fr;}}
+@media(max-width:960px){.sim-grid{grid-template-columns:1fr 1fr;}.rgrid{grid-template-columns:1fr 1fr;}.scw{display:none;}.stock-metrics{grid-template-columns:repeat(3,1fr);}.stats-row{grid-template-columns:repeat(2,1fr);}.dgrid{grid-template-columns:1fr 1fr;}.intel-grid{grid-template-columns:1fr 1fr;}.intel-card-wide{grid-column:span 2;}}
+@media(max-width:600px){header{padding:12px 16px;flex-direction:column;gap:10px;}.tabs{padding:0 12px;}.tab{padding:10px 12px;font-size:10px;letter-spacing:1px;}main{padding:16px 14px;}.sim-grid{grid-template-columns:1fr;}.stock-metrics{grid-template-columns:repeat(2,1fr);}.dgrid{grid-template-columns:1fr 1fr;}.stats-row{grid-template-columns:1fr 1fr;}.rgrid{grid-template-columns:1fr;}.intel-grid{grid-template-columns:1fr;}.intel-card-wide{grid-column:span 1;}}
 </style>
 </head>
 <body>
@@ -330,6 +357,66 @@ main{position:relative;z-index:5;padding:24px 28px;max-width:1440px;margin:0 aut
     </div>
     <div class="stock-metrics" id="sc-metrics"></div>
     <div class="data-src" id="sc-src"></div>
+  </div>
+
+  <!-- ══ MARKET INTELLIGENCE PANEL ══ -->
+  <!-- 顯示真實市場資料，不依賴 AI，讓用戶自行判斷 -->
+  <div class="intel-panel" id="intelPanel" style="display:none">
+    <div class="intel-header">
+      <div class="intel-title">
+        <span class="intel-icon">📡</span>
+        <span>市場情報面板</span>
+        <span class="intel-badge">即時資料</span>
+      </div>
+      <div class="intel-note">以下為公開資料彙整，無需 AI 即可參考判斷</div>
+    </div>
+
+    <div class="intel-grid">
+
+      <!-- 技術指標區 -->
+      <div class="intel-card">
+        <div class="intel-card-title">📈 技術面參考</div>
+        <div id="intel-tech">
+          <div class="intel-row"><span class="ir-lbl">52週最高</span><span class="ir-val up" id="it-high52">—</span></div>
+          <div class="intel-row"><span class="ir-lbl">52週最低</span><span class="ir-val dn" id="it-low52">—</span></div>
+          <div class="intel-row"><span class="ir-lbl">今日振幅</span><span class="ir-val" id="it-amp">—</span></div>
+          <div class="intel-row"><span class="ir-lbl">量能狀態</span><span class="ir-val" id="it-vol">—</span></div>
+          <div class="intel-row"><span class="ir-lbl">價格位置</span><span class="ir-val" id="it-pos">—</span></div>
+          <div class="intel-signal" id="it-signal">—</div>
+        </div>
+      </div>
+
+      <!-- 法人籌碼提示 -->
+      <div class="intel-card">
+        <div class="intel-card-title">🏛️ 籌碼面提示</div>
+        <div id="intel-inst">
+          <div class="intel-note-sm">⚠️ 三大法人即時資料需券商帳號或付費 API，以下為公開資訊查詢提示：</div>
+          <div class="intel-link-list">
+            <a class="intel-link" id="il-twse" href="#" target="_blank">📋 證交所三大法人買賣超</a>
+            <a class="intel-link" id="il-tpex" href="#" target="_blank">📋 櫃買中心法人資料</a>
+            <a class="intel-link" id="il-mops" href="#" target="_blank">📋 公開資訊觀測站（財報）</a>
+            <a class="intel-link" id="il-goodinfo" href="#" target="_blank">📊 Goodinfo 籌碼分析</a>
+          </div>
+          <div class="intel-note-sm" style="margin-top:8px">💡 查完後將資訊填入下方「補充資訊」欄，讓 AI 一起分析</div>
+        </div>
+      </div>
+
+      <!-- 即時新聞 -->
+      <div class="intel-card intel-card-wide">
+        <div class="intel-card-title">📰 相關新聞（Google News）</div>
+        <div id="intel-news">
+          <div class="intel-note-sm">點擊連結查看即時新聞，評估市場情緒後填入補充欄位</div>
+          <div class="intel-link-list" id="news-links"></div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 自助評分區 -->
+    <div class="self-score-bar">
+      <span class="ss-title">💡 看完資料後，調整上方評分滑桿，再點擊 AI 分析（或模擬分析）</span>
+      <button class="btn btn-cyan" style="padding:8px 18px;font-size:10px" onclick="document.getElementById('runBtn').scrollIntoView({behavior:'smooth'})">▼ 前往分析</button>
+    </div>
   </div>
 
   <!-- ANALYZER -->
@@ -635,9 +722,10 @@ async function fetchStock() {
   } catch(e) {
     console.error(e);
     showStockCardError(code);
+  } finally {
+    // ✅ 無論成功或失敗，按鈕一定還原
+    btn.disabled = false; btn.textContent = '🔍 查詢股價';
   }
-
-  btn.disabled = false; btn.textContent = '🔍 查詢股價';
 }
 
 // ── 即時行情：同時嘗試 tse_ 和 otc_ ──
@@ -838,6 +926,85 @@ function showStockCard(d, isRealtime) {
 
   // value 用 textContent 邏輯（input.value 本身安全，不會執行 script）
   document.getElementById('ext').value = `${stockTypeLabel(d.type)} ${d.code} ${d.name}，股價${d.close}，漲跌${d.isUp?'+':''}${d.changePct}%，成交量${d.vol}張${d.type==='otc'?'（注意：可能為興櫃，流動性較低）':''}`;
+
+  // 顯示市場情報面板
+  showIntelPanel(d);
+}
+
+// ── 市場情報面板（不依賴 AI）──
+function showIntelPanel(d) {
+  const panel = document.getElementById('intelPanel');
+  panel.style.display = 'block';
+
+  const code = d.code;
+  const name = d.name || code;
+
+  // ── 技術面簡易判斷 ──
+  const close     = d.close;
+  const high      = d.high;
+  const low       = d.low;
+  const prevClose = d.prevClose || close;
+
+  // 今日振幅
+  const amp = high && low && !isNaN(high) && !isNaN(low)
+    ? (((high - low) / prevClose) * 100).toFixed(2) + '%'
+    : '—';
+
+  // 相對位置（今收 vs 今日高低）
+  const range = high - low;
+  const pos   = range > 0
+    ? Math.round(((close - low) / range) * 100) + '% （高低區間）'
+    : '—';
+
+  // 量能評估（成交量文字判斷）
+  const volNum = typeof d.vol === 'string'
+    ? parseInt(d.vol.replace(/,/g,'')) || 0
+    : d.vol || 0;
+  let volLabel = '—';
+  if (volNum > 50000)       volLabel = '🔥 爆量（>5萬張）';
+  else if (volNum > 20000)  volLabel = '⬆ 大量（>2萬張）';
+  else if (volNum > 5000)   volLabel = '📊 正常量';
+  else if (volNum > 0)      volLabel = '⬇ 縮量';
+
+  // 技術信號簡易判斷
+  const chg = parseFloat(d.changePct) || 0;
+  let sigText = '', sigCls = 'neut';
+  if      (chg >= 3)  { sigText = '📈 強勢上漲，短線偏多'; sigCls = 'bull'; }
+  else if (chg >= 1)  { sigText = '↑ 溫和上漲，多頭偏強'; sigCls = 'bull'; }
+  else if (chg >= -1) { sigText = '→ 盤整格局，方向待確認'; sigCls = 'neut'; }
+  else if (chg >= -3) { sigText = '↓ 小幅回落，注意支撐'; sigCls = 'bear'; }
+  else                { sigText = '📉 明顯弱勢，謹慎操作'; sigCls = 'bear'; }
+
+  document.getElementById('it-high52').textContent = fmt(high);
+  document.getElementById('it-low52').textContent  = fmt(low);
+  document.getElementById('it-amp').textContent    = amp;
+  document.getElementById('it-vol').textContent    = volLabel;
+  document.getElementById('it-pos').textContent    = pos;
+  const sigEl = document.getElementById('it-signal');
+  sigEl.textContent = sigText;
+  sigEl.className   = 'intel-signal ' + sigCls;
+
+  // ── 法人籌碼查詢連結 ──
+  const isOtc = d.type === 'otc';
+  document.getElementById('il-twse').href     = `https://www.twse.com.tw/zh/trading/fund/T86.html`;
+  document.getElementById('il-twse').textContent = isOtc ? '📋 櫃買中心三大法人' : '📋 證交所三大法人買賣超';
+  document.getElementById('il-tpex').href     = `https://www.tpex.org.tw/web/stock/3insti/daily_trade/3itrade_hedge_result.php?l=zh-tw`;
+  document.getElementById('il-mops').href     = `https://mops.twse.com.tw/mops/web/t05st09_1?co_id=${code}`;
+  document.getElementById('il-mops').textContent = `📋 ${esc(name)} 財報（公開資訊觀測站）`;
+  document.getElementById('il-goodinfo').href = `https://goodinfo.tw/tw/StockBzPerformance.asp?STOCK_ID=${code}`;
+  document.getElementById('il-goodinfo').textContent = `📊 ${esc(name)} Goodinfo 籌碼/財報`;
+
+  // ── Google News 相關新聞連結 ──
+  const newsLinks = [
+    { label:`🔍 Google News：${name} 最新消息`,    url:`https://news.google.com/search?q=${encodeURIComponent(name)}&hl=zh-TW&gl=TW&ceid=TW:zh-Hant` },
+    { label:`📰 Google News：${code} ${name} 財報`, url:`https://news.google.com/search?q=${encodeURIComponent(name+'財報營收')}&hl=zh-TW&gl=TW&ceid=TW:zh-Hant` },
+    { label:`📡 鉅亨網：${name} 相關新聞`,          url:`https://news.cnyes.com/search?q=${encodeURIComponent(name)}` },
+    { label:`💬 PTT Stock：${code} 討論`,           url:`https://www.ptt.cc/bbs/Stock/search?q=${code}` },
+  ];
+
+  document.getElementById('news-links').innerHTML = newsLinks.map(n =>
+    `<a class="intel-link" href="${n.url}" target="_blank">${esc(n.label)}</a>`
+  ).join('');
 }
 
 function showStockCardError(code) {
@@ -904,15 +1071,24 @@ async function runAnalysis() {
     } catch(e) {
       console.error(e);
       if (e.message === 'USER_CANCELLED') {
-        // 用戶主動取消，靜默改用模擬
         res = simulate(sid, snm, ind, f, ins, s, t, ext);
       } else {
         toast('Gemini 失敗，改用模擬模式：' + e.message, 'err', 5000);
         res = simulate(sid, snm, ind, f, ins, s, t, ext);
       }
+    } finally {
+      // ✅ 無論成功、失敗、例外，按鈕一定解鎖
+      document.getElementById('runBtn').disabled = false;
     }
 
-    displayResult(res, sid, snm, !!KEY);
+    // res 一定有值（fallback 到 simulate）
+    try {
+      displayResult(res, sid, snm, !!KEY);
+    } catch(e) {
+      console.error('displayResult error:', e);
+      toast('顯示結果時發生錯誤，請重試', 'err');
+      return;
+    }
 
     // Save to IndexedDB
     const record = {
@@ -935,9 +1111,7 @@ async function runAnalysis() {
       timeStr:   new Date().toLocaleString('zh-TW')
     };
     try { await dbAdd(record); toast('✅ 分析結果已儲存至資料庫','ok'); }
-    catch(e) { console.error('DB save error:', e); }
-
-    document.getElementById('runBtn').disabled = false;
+    catch(e) { console.error('DB save error:', e); toast('⚠️ 儲存失敗，但分析結果仍可查看', 'info'); }
   });
 }
 
@@ -1184,37 +1358,42 @@ function displayResult(r, sid, snm, isReal) {
 let allRecords = [];
 
 async function renderHistTable() {
-  allRecords = await dbGetAll();
-  const q   = (document.getElementById('histSearch').value||'').toLowerCase();
   const body = document.getElementById('histBody');
+  try {
+    allRecords = await dbGetAll();
+    const q = (document.getElementById('histSearch').value||'').toLowerCase();
 
-  let filtered = allRecords.filter(r => {
-    const matchQ    = !q || r.stockId.toLowerCase().includes(q) || (r.stockName||'').toLowerCase().includes(q);
-    const matchFlt  = currentFilter==='all'  ? true
-                    : currentFilter==='buy'  ? r.signalCls==='buy'
-                    : currentFilter==='sell' ? r.signalCls==='sell'
-                    : currentFilter==='hold' ? r.signalCls==='hold'
-                    : currentFilter==='real' ? r.isReal : true;
-    return matchQ && matchFlt;
-  });
+    let filtered = allRecords.filter(r => {
+      const matchQ   = !q || r.stockId.toLowerCase().includes(q) || (r.stockName||'').toLowerCase().includes(q);
+      const matchFlt = currentFilter==='all'  ? true
+                     : currentFilter==='buy'  ? r.signalCls==='buy'
+                     : currentFilter==='sell' ? r.signalCls==='sell'
+                     : currentFilter==='hold' ? r.signalCls==='hold'
+                     : currentFilter==='real' ? r.isReal : true;
+      return matchQ && matchFlt;
+    });
 
-  if (!filtered.length) {
-    body.innerHTML = `<tr><td colspan="8" class="no-data">📭 無符合記錄</td></tr>`;
-    return;
+    if (!filtered.length) {
+      body.innerHTML = `<tr><td colspan="8" class="no-data">📭 無符合記錄</td></tr>`;
+      return;
+    }
+
+    body.innerHTML = filtered.map(r => `
+      <tr>
+        <td class="ht-stock">${esc(r.stockId)}</td>
+        <td>${esc(r.stockName||'—')}</td>
+        <td><span class="ht-sig ${esc(r.signalCls)}">${esc(r.signal)}</span></td>
+        <td class="ht-score">${esc(r.score)}分</td>
+        <td class="ht-price">${r.stockPrice ? esc(r.stockPrice)+'元' : '—'}</td>
+        <td><span class="ht-ai ${r.isReal?'real':'demo'}">${r.isReal?'Gemini':'模擬'}</span></td>
+        <td style="color:var(--dim);font-size:11px">${esc(r.timeStr||r.datetime?.slice(0,16)||'—')}</td>
+        <td><span class="ht-action" onclick="deleteRecord(${Number(r.id)})">刪除</span></td>
+      </tr>
+    `).join('');
+  } catch(e) {
+    console.error('renderHistTable error:', e);
+    body.innerHTML = `<tr><td colspan="8" class="no-data" style="color:var(--red)">⚠️ 讀取記錄失敗，請重新整理頁面</td></tr>`;
   }
-
-  body.innerHTML = filtered.map(r => `
-    <tr>
-      <td class="ht-stock">${esc(r.stockId)}</td>
-      <td>${esc(r.stockName||'—')}</td>
-      <td><span class="ht-sig ${esc(r.signalCls)}">${esc(r.signal)}</span></td>
-      <td class="ht-score">${esc(r.score)}分</td>
-      <td class="ht-price">${r.stockPrice ? esc(r.stockPrice)+'元' : '—'}</td>
-      <td><span class="ht-ai ${r.isReal?'real':'demo'}">${r.isReal?'Gemini':'模擬'}</span></td>
-      <td style="color:var(--dim);font-size:11px">${esc(r.timeStr||r.datetime?.slice(0,16)||'—')}</td>
-      <td><span class="ht-action" onclick="deleteRecord(${Number(r.id)})">刪除</span></td>
-    </tr>
-  `).join('');
 }
 
 function setFilter(f, el) {
@@ -1225,37 +1404,53 @@ function setFilter(f, el) {
 }
 
 async function deleteRecord(id) {
-  await dbDelete(id);
-  renderHistTable();
-  toast('記錄已刪除','info');
+  try {
+    await dbDelete(id);
+    await renderHistTable();
+    toast('記錄已刪除','info');
+  } catch(e) {
+    console.error('deleteRecord error:', e);
+    toast('⚠️ 刪除失敗，請重試','err');
+  }
 }
 
 async function clearAllHistory() {
   if (!confirm('確定要清除全部分析記錄嗎？此操作無法復原！')) return;
-  await dbClear();
-  renderHistTable();
-  toast('全部記錄已清除','info');
+  try {
+    await dbClear();
+    await renderHistTable();
+    toast('全部記錄已清除','info');
+  } catch(e) {
+    console.error('clearAllHistory error:', e);
+    toast('⚠️ 清除失敗，請重試','err');
+  }
 }
 
 async function exportCSV() {
-  const data = await dbGetAll();
-  if (!data.length) { toast('無資料可匯出','err'); return; }
-  const header = '代號,名稱,決策訊號,評分,股價,倉位,停損,獲利目標,AI模式,時間\n';
-  const rows = data.map(r =>
-    `${r.stockId},${r.stockName||''},${r.signal},${r.score},${r.stockPrice||''},${r.position||''},${r.stopLoss||''},${r.takeProfit||''},${r.isReal?'Gemini':'模擬'},${r.timeStr||''}`
-  ).join('\n');
-  const blob = new Blob(['\uFEFF'+header+rows], {type:'text/csv;charset=utf-8'});
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = `quantmind_history_${new Date().toISOString().slice(0,10)}.csv`;
-  a.click();
-  toast('✅ CSV 匯出成功','ok');
+  try {
+    const data = await dbGetAll();
+    if (!data.length) { toast('無資料可匯出','err'); return; }
+    const header = '代號,名稱,決策訊號,評分,股價,倉位,停損,獲利目標,AI模式,時間\n';
+    const rows = data.map(r =>
+      `${r.stockId},${r.stockName||''},${r.signal},${r.score},${r.stockPrice||''},${r.position||''},${r.stopLoss||''},${r.takeProfit||''},${r.isReal?'Gemini':'模擬'},${r.timeStr||''}`
+    ).join('\n');
+    const blob = new Blob(['\uFEFF'+header+rows], {type:'text/csv;charset=utf-8'});
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = `quantmind_history_${new Date().toISOString().slice(0,10)}.csv`;
+    a.click();
+    toast('✅ CSV 匯出成功','ok');
+  } catch(e) {
+    console.error('exportCSV error:', e);
+    toast('⚠️ 匯出失敗：' + e.message, 'err');
+  }
 }
 
 // ═══════════════════════════════════════
 // STATS
 // ═══════════════════════════════════════
 async function renderStats() {
+  try {
   const data = await dbGetAll();
   const total = data.length;
   const buyN  = data.filter(r=>r.signalCls==='buy').length;
@@ -1310,16 +1505,26 @@ async function renderStats() {
       </div>
     `).join('')
     : '<div class="no-data">尚無分析記錄</div>';
+  } catch(e) {
+    console.error('renderStats error:', e);
+    document.getElementById('statsCards').innerHTML =
+      `<div class="stat-card" style="grid-column:span 4"><div class="stat-num" style="font-size:14px;color:var(--red)">⚠️ 統計載入失敗</div><div class="stat-lbl">請重新整理頁面</div></div>`;
+  }
 }
 
 // ═══════════════════════════════════════
 // INIT
 // ═══════════════════════════════════════
 (async () => {
-  await initDB();
-  if (KEY) { showMasked(true); updateBadge(true); }
-  pickModel(MODEL, {'gemini-2.0-flash':'m1','gemini-1.5-flash':'m2','gemini-1.5-pro':'m3'}[MODEL]||'m1');
-  toast('🚀 QUANTMIND v4.0 已啟動，資料庫就緒','info');
+  try {
+    await initDB();
+    if (KEY) { showMasked(true); updateBadge(true); }
+    pickModel(MODEL, {'gemini-2.0-flash':'m1','gemini-1.5-flash':'m2','gemini-1.5-pro':'m3'}[MODEL]||'m1');
+    toast('🚀 QUANTMIND v4.0 已啟動，資料庫就緒','info');
+  } catch(e) {
+    console.error('INIT error:', e);
+    toast('⚠️ 系統初始化失敗，部分功能可能無法使用', 'err', 6000);
+  }
 })();
 </script>
 </body>
